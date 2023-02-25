@@ -1,8 +1,3 @@
-const $ = window.$
-
-let amenityIds = []
-
-$(document).ready(function () {
   $('div.amenities input[type="checkbox"]').on('click', function () {
     $(this).each(function (idx, item) {
       if ($(this).is(':checked')) {
@@ -15,17 +10,3 @@ $(document).ready(function () {
 	}
       }
     });
-    
-    // Update h4 tag
-    $('.amenities h4').text(amenityIds.join(', '));
-  });
-
-  $.get('http://0.0.0.0:5001/api/v1/status/', function (data, textStatus) {
-    if (data.status === 'OK') {
-      // Add class
-      $('div#api_status').addClass('available');
-    } else {
-      $('div#api_status').removeClass('available');
-    }
-  });
-});
